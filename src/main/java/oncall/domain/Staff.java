@@ -48,8 +48,13 @@ public class Staff implements Comparable<Staff> {
 
     public void changeWorkDate(Staff frontOrderStaff) {
         LocalDate otherWorkDate = frontOrderStaff.workDate;
+        boolean otherISHoliday = frontOrderStaff.isHoliday;
+
         frontOrderStaff.setWorkDate(workDate);
+        frontOrderStaff.setHoliday(isHoliday);
+
         workDate = otherWorkDate;
+        isHoliday = otherISHoliday;
     }
 
     private void validateName(String name) {
