@@ -46,9 +46,9 @@ public class Staff implements Comparable<Staff> {
     }
 
 
-    public void changeWorkDate(Staff other) {
-        LocalDate otherWorkDate = other.workDate;
-        other.setWorkDate(workDate);
+    public void changeWorkDate(Staff frontOrderStaff) {
+        LocalDate otherWorkDate = frontOrderStaff.workDate;
+        frontOrderStaff.setWorkDate(workDate);
         workDate = otherWorkDate;
     }
 

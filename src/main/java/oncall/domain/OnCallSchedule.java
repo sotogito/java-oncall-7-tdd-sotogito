@@ -23,7 +23,8 @@ public class OnCallSchedule {
     public void changeOrder(int day1, int day2) {
         Staff staff1 = staffs.get(day1);
         Staff staff2 = staffs.get(day2);
-        staff1.changeWorkDate(staff2);
+        staff2.changeWorkDate(staff1);
+        //staff1.changeWorkDate(staff2);
     }
 
     public List<Staff> getStaffs() {
