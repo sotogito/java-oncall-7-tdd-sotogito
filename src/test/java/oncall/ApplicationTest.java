@@ -72,6 +72,23 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 기능_테스트_자리_바꿈() {
+        assertSimpleTest(() -> {
+            run(
+                    "4,토",
+                    "1,2,3,4,5",
+                    "2,1,3,4,5"
+            );
+            assertThat(output()).contains(
+                    "4월 1일 토 1" + LINE_SEPARATOR,
+                    "4월 2일 일 2" + LINE_SEPARATOR,
+                    "4월 3일 월 2" + LINE_SEPARATOR,
+                    "4월 4일 화 1"
+            );
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});

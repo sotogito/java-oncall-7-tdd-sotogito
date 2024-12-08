@@ -35,7 +35,6 @@ public class OnCallSchedule {
         StringBuilder printOut = new StringBuilder();
 
         for (Staff staff : staffs) {
-            System.out.println(staff);
             printOut.append(staff);
             printOut.append("\n");
         }

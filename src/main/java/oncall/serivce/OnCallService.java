@@ -21,7 +21,6 @@ public class OnCallService {
         duplicateStaffProcessing(onCallSchedule);
 
         onCallSchedule.sort();
-        //System.out.println(onCallSchedule);
         return onCallSchedule;
     }
 
