@@ -22,6 +22,10 @@ public class Staff implements Comparable<Staff> {
         this.isHoliday = false;
     }
 
+    public boolean isSameName(Staff other){
+        return this.name.equals(other.name);
+    }
+
     public void setWorkDate(LocalDate workDate) {
         this.workDate = workDate;
     }
@@ -42,6 +46,11 @@ public class Staff implements Comparable<Staff> {
     }
 
 
+    public void changeWorkDate(Staff other) {
+        LocalDate otherWorkDate = other.workDate;
+        other.setWorkDate(workDate);
+        workDate = otherWorkDate;
+    }
 
     private void validateName(String name) {
         if(name.isEmpty() || name.length() > 5) {
@@ -75,7 +84,7 @@ public class Staff implements Comparable<Staff> {
         int month = workDate.getMonthValue();
         int day = workDate.getDayOfMonth();
         DayOfTheWeek dayOfTheWeek = DayOfTheWeek.find(workDate.getDayOfWeek());
-        String dayOfWeekKorean = dayOfTheWeek.name();
+        String dayOfWeekKorean = dayOfTheWeek.getKorean();
 
         if(!workType.isWeekend() && isHoliday){
             return String.format("%d월 %d일 %s(휴일) %s",

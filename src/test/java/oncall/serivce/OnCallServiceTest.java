@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 class OnCallServiceTest {
     Staff staff1 = new Staff("가", WorkType.WEEKDAY);
-    Staff staff2 = new Staff("가",WorkType.WEEKEND);
+    Staff staff2 = new Staff("마",WorkType.WEEKEND);
 
     Staff staff3 = new Staff("나",WorkType.WEEKDAY);
     Staff staff4 = new Staff("나",WorkType.WEEKEND);
@@ -25,7 +25,7 @@ class OnCallServiceTest {
     Staff staff8 = new Staff("라",WorkType.WEEKEND);
 
     Staff staff9 = new Staff("마",WorkType.WEEKDAY);
-    Staff staff10 = new Staff("마",WorkType.WEEKEND);
+    Staff staff10 = new Staff("가",WorkType.WEEKEND);
 
     @Test
     void 기본정렬출력확인(){

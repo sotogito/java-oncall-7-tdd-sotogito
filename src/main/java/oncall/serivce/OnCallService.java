@@ -14,18 +14,13 @@ import oncall.domain.Staffs;
 
 public class OnCallService {
 
-    /**
-     * 5. 평일인지 주말인지 + 평일인 경우 공휴일인지
-     *   -  평일 : 평일 인원을 추가
-     *  - 주말 : 주말 인원을 추가
-     *
-     *
-     */
-
     public OnCallSchedule schedule(Schedule schedule, Staffs staffs){
         OnCallSchedule onCallSchedule = new OnCallSchedule();
         basicSorting(onCallSchedule, schedule, staffs);
 
+        duplicateStaffProcessing(onCallSchedule);
+
+        onCallSchedule.sort();
         System.out.println(onCallSchedule);
         return onCallSchedule;
     }
@@ -51,6 +46,7 @@ public class OnCallService {
                     //note 평일 추가
                     nowStaff = staffs.findStaffByOrder(WorkType.WEEKDAY,dayOrder);
                     nowStaff.setWorkDate(scheduleDate);
+                    nowStaff.setHoliday(false);
                     dayOrder++;
                 }
             } else if (isWeekend) {
@@ -64,6 +60,7 @@ public class OnCallService {
                     //note 주말 추가
                     nowStaff = staffs.findStaffByOrder(WorkType.WEEKEND,endOrder);
                     nowStaff.setWorkDate(scheduleDate);
+                    nowStaff.setHoliday(false);
                     endOrder++;
                 }
             }
@@ -73,15 +70,22 @@ public class OnCallService {
 
     }
 
+    public void duplicateStaffProcessing(OnCallSchedule onCallSchedule){
+        List<Staff> staffs = onCallSchedule.getStaffs();
+        for(int i = 0; i < staffs.size()-2; i++){
+            Staff staff1 = staffs.get(i);
+            Staff staff2 = staffs.get(i+1);
+            Staff staff3 = staffs.get(i+2);
 
-
-
-
-
-
-    public void duplicateStaffProcessing(){
-
+            /**
+             * 같은 애들기리 바꾸는게 아님
+             */
+            if(staff1.isSameName(staff2)){
+                onCallSchedule.changeOrder(i+1, i+2);
+            }
+        }
     }
+
 
 
 }
