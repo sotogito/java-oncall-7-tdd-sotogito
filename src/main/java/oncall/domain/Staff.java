@@ -18,6 +18,9 @@ public class Staff implements Comparable<Staff> {
         this.workType = workType;
     }
 
+    public WorkType getWorkType() {
+        return workType;
+    }
 
     private void validateName(String name) {
         if(name.isEmpty() || name.length() > 5) {
@@ -44,5 +47,7 @@ public class Staff implements Comparable<Staff> {
     public int compareTo(Staff o) {
         return this.workDate.compareTo(o.workDate);
     }
+
+
 
 }
