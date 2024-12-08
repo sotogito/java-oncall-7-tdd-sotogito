@@ -21,10 +21,11 @@ public class OnCallService {
         duplicateStaffProcessing(onCallSchedule);
 
         onCallSchedule.sort();
-        System.out.println(onCallSchedule);
+        //System.out.println(onCallSchedule);
         return onCallSchedule;
     }
-    public void basicSorting(OnCallSchedule onCallSchedule,Schedule schedule, Staffs staffs){
+
+    private void basicSorting(OnCallSchedule onCallSchedule,Schedule schedule, Staffs staffs){
         LocalDate scheduleDate = schedule.getDate();
         Month scheduleMonth = scheduleDate.getMonth();
         int dayOrder = 0;
@@ -60,7 +61,7 @@ public class OnCallService {
                     //note 주말 추가
                     nowStaff = staffs.findStaffByOrder(WorkType.WEEKEND,endOrder);
                     nowStaff.setWorkDate(scheduleDate);
-                    nowStaff.setHoliday(false);
+                    nowStaff.setHoliday(false); //todo 왜???이거하나씩해줘야돼
                     endOrder++;
                 }
             }
@@ -70,7 +71,7 @@ public class OnCallService {
 
     }
 
-    public void duplicateStaffProcessing(OnCallSchedule onCallSchedule){
+    private void duplicateStaffProcessing(OnCallSchedule onCallSchedule){
         List<Staff> staffs = onCallSchedule.getStaffs();
         for(int i = 0; i < staffs.size()-2; i++){
             Staff staff1 = staffs.get(i);

@@ -37,15 +37,14 @@ public class Staffs {
         if (weekdays.size() != weekends.size()) {
             throw new IllegalArgumentException("유효하지 않은 입력 값입니다. 다시 입력해 주세요.-2");
         }
-        /*
+
         Set<Staff> staffSet = new HashSet<>(weekdays);
         staffSet.addAll(weekends);
-
         if (staffSet.size() != weekdays.size()) {
             throw new IllegalArgumentException("유효하지 않은 입력 값입니다. 다시 입력해 주세요.-3");
         }
 
-         */
+
     }
 
 
