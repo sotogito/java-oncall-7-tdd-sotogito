@@ -63,14 +63,14 @@ public class Staff implements Comparable<Staff> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Staff staff = (Staff) o;
-        return Objects.equals(name, staff.name) &&
-                Objects.equals(workType, staff.workType);
+        return Objects.equals(name, staff.name);
+               // Objects.equals(workType, staff.workType);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, workType);
+        return Objects.hash(name);
     }
 
 
