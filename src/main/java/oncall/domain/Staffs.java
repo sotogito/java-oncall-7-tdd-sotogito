@@ -19,21 +19,33 @@ public class Staffs {
         this.staffs = staffs;
     }
 
-    private void validateSize(List<Staff> staffs){
-        if(staffs.size()<5 || staffs.size()>35){
+
+
+    public Staff findStaffByOrder(WorkType workType, int order) {
+        List<Staff> staffList = staffs.get(workType);
+        int index = order % staffList.size();
+        return staffList.get(index);
+    }
+
+    private void validateSize(List<Staff> staffs) {
+        if (staffs.size() < 5 || staffs.size() > 35) {
             throw new IllegalArgumentException("유효하지 않은 입력 값입니다. 다시 입력해 주세요.-1");
         }
     }
+
     private void validateSameStaffs(List<Staff> weekdays, List<Staff> weekends) {
         if (weekdays.size() != weekends.size()) {
             throw new IllegalArgumentException("유효하지 않은 입력 값입니다. 다시 입력해 주세요.-2");
         }
+        /*
         Set<Staff> staffSet = new HashSet<>(weekdays);
         staffSet.addAll(weekends);
 
         if (staffSet.size() != weekdays.size()) {
             throw new IllegalArgumentException("유효하지 않은 입력 값입니다. 다시 입력해 주세요.-3");
         }
+
+         */
     }
 
 

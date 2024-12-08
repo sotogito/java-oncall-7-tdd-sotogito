@@ -22,7 +22,6 @@ public class OnCallSettingService {
     }
 
 
-
     public Staffs createStaffs(WeekdayStaffsDto weekdayStaffs, WeekendStaffsDto weekendStaffs){
         EnumMap<WorkType, List<Staff>> staffs = new EnumMap<>(WorkType.class);
 

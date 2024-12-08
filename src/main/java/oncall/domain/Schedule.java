@@ -11,9 +11,16 @@ public class Schedule {
         validateMonth(month);
         LocalDate scheduleDate = LocalDate.of(2023, month, 1);
         validateDayOfWeek(scheduleDate,dayOfWeek);
-        
+
         this.date = scheduleDate;
     }
+
+    //note 시작과 끝
+
+    public LocalDate getDate() {
+        return date;
+    }
+
 
     private void validateMonth(int month) {
         if(month < 1 || month > 12) {
