@@ -7,6 +7,8 @@ import java.util.Set;
 import oncall.constant.WorkType;
 
 public class Staffs {
+    //note 사실 WeekDay, WeekEnd 객체를 따로따로 만드느게 맞지만 코딩테스트에서는 조회가 어려울수도 있따.
+    // 다음과 같은 형태라면 그냥 EnumMap을 사용하는게 빠르다.
     private final EnumMap<WorkType, List<Staff>> staffs;
 
     public Staffs(EnumMap<WorkType, List<Staff>> staffs) {
@@ -18,8 +20,6 @@ public class Staffs {
 
         this.staffs = staffs;
     }
-
-
 
     public Staff findStaffByOrder(WorkType workType, int order) {
         List<Staff> staffList = staffs.get(workType);
@@ -43,8 +43,6 @@ public class Staffs {
         if (staffSet.size() != weekdays.size()) {
             throw new IllegalArgumentException("유효하지 않은 입력 값입니다. 다시 입력해 주세요.-3");
         }
-
-
     }
 
 

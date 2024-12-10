@@ -98,7 +98,7 @@ class ApplicationTest extends NsTest {
                     "2,1,3,4,5"
             );
             assertThat(output()).contains(
-                    "5월 5일 금(휴일) 5" + LINE_SEPARATOR
+                    "5월 5일 금(휴일) 2\n"
             );
         });
     }

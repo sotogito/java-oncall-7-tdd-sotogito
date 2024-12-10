@@ -13,14 +13,11 @@ import oncall.dto.WeekendStaffsDto;
 
 public class OnCallSettingService {
 
-
-
     public Schedule createSchedule(ScheduleDto scheduleDto){
         int month = scheduleDto.month();
         String string = scheduleDto.startDayOfWeek();
         return new Schedule(month, string);
     }
-
 
     public Staffs createStaffs(WeekdayStaffsDto weekdayStaffs, WeekendStaffsDto weekendStaffs){
         EnumMap<WorkType, List<Staff>> staffs = new EnumMap<>(WorkType.class);

@@ -15,12 +15,13 @@ public class Schedule {
         this.date = scheduleDate;
     }
 
-    //note 시작과 끝
-
-    public LocalDate getDate() {
-        return date;
+    public int getDayCount(){
+        return date.lengthOfMonth();
     }
 
+    public LocalDate getStartDate(){
+        return date;
+    }
 
     private void validateMonth(int month) {
         if(month < 1 || month > 12) {
