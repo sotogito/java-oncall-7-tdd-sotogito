@@ -1,45 +1,53 @@
 package oncall.domain;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import oncall.constant.DayOfTheWeek;
+import oncall.constant.WorkType;
 
 public class OnCallSchedule {
-    private final List<Staff> staffs;
+    private final Map<LocalDate,Staff> onCallSchedule;
 
     public OnCallSchedule() {
-        this.staffs = new ArrayList<>();
+        onCallSchedule = new TreeMap<>(); //날짜 순서대로 정렬해야함
     }
 
-    public void addStaff(Staff staff) {
-        staffs.add(staff.getNewStaff());
+    public void reSort(OnCallPolicy sortHelper){
+        sortHelper.sort(onCallSchedule);
     }
 
-    public void sort(){
-        staffs.sort(null);
-    }
-
-    //note LocalDate의 day-1
-    public void changeOrder(int day1, int day2) {
-        Staff staff1 = staffs.get(day1);
-        Staff staff2 = staffs.get(day2);
-        staff2.changeWorkDate(staff1);
-        //staff1.changeWorkDate(staff2);
-    }
-
-    public List<Staff> getStaffs() {
-        return Collections.unmodifiableList(staffs);
+    public void addSchedule(LocalDate date, Staff staff) {
+        onCallSchedule.put(date, staff);
     }
 
     @Override
     public String toString() {
-        StringBuilder printOut = new StringBuilder();
+        StringBuilder printout = new StringBuilder();
 
-        for (Staff staff : staffs) {
-            printOut.append(staff);
-            printOut.append("\n");
+        for(Map.Entry<LocalDate,Staff> entry : onCallSchedule.entrySet()){
+            LocalDate date = entry.getKey();
+            int month = date.getMonthValue();
+            int day = date.getDayOfMonth();
+            String dayOfWeek = DayOfTheWeek.find(date.getDayOfWeek()).getKorean();
+
+            Staff staff = entry.getValue();
+
+            if(staff.getWorkType().equals(WorkType.HOLIDAY)){
+                printout.append(String.format(
+                        "%d월 %d일 %s(휴일) %s\n",month,day,dayOfWeek,staff.getName()));
+                continue;
+            }
+            printout.append(String.format(
+                    "%d월 %d일 %s %s\n",month,day,dayOfWeek,staff.getName()));
         }
-        return printOut.toString();
+        return printout.toString();
     }
+
 
 }
