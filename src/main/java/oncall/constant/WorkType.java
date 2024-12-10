@@ -2,7 +2,8 @@ package oncall.constant;
 
 public enum WorkType {
     WEEKDAY(false),
-    WEEKEND(true);
+    WEEKEND(true),
+    HOLIDAY(true);
 
     private final boolean isWeekend;
 
