@@ -28,6 +28,7 @@ public class Schedule {
         }
     }
 
+    //note 입력받은 달의 첫 요일인지 유효검시
     private void validateDayOfWeek(LocalDate localDate, String input) {
         DayOfTheWeek realDayOfWeek = DayOfTheWeek.find(localDate.getDayOfWeek());
         if (!realDayOfWeek.getKorean().equals(input)) {
