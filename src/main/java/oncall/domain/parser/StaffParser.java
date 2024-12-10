@@ -8,19 +8,14 @@ import oncall.dto.WeekendStaffsDto;
 public class StaffParser {
 
     public static WeekdayStaffsDto parseWeekday(String input){
-        List<String> result = new ArrayList<>();
-        input = input.trim();
-
-        String[] split = input.split(",");
-
-        for (String s : split) {
-            result.add(s.trim());
-        }
-
-        return new WeekdayStaffsDto(result);
+        return new WeekdayStaffsDto(parse(input));
     }
 
     public static WeekendStaffsDto parseWeekend(String input){
+        return new WeekendStaffsDto(parse(input));
+    }
+
+    private static List<String> parse(String input){
         List<String> result = new ArrayList<>();
         input = input.trim();
 
@@ -29,7 +24,7 @@ public class StaffParser {
         for (String s : split) {
             result.add(s.trim());
         }
-
-        return new WeekendStaffsDto(result);
+        return result;
     }
+
 }
