@@ -12,7 +12,7 @@ import oncall.constant.DayOfTheWeek;
 import oncall.constant.WorkType;
 
 public class OnCallSchedule {
-    private final Map<LocalDate,Staff> onCallSchedule;
+    private final TreeMap<LocalDate,Staff> onCallSchedule;
 
     public OnCallSchedule() {
         onCallSchedule = new TreeMap<>(); //날짜 순서대로 정렬해야함

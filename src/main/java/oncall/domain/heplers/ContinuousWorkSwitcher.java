@@ -4,17 +4,39 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import oncall.domain.OnCallPolicy;
 import oncall.domain.Staff;
 
 public class ContinuousWorkSwitcher implements OnCallPolicy {
 
+    public void sort(TreeMap<LocalDate, Staff> onCallSchedule){
+        List<Map.Entry<LocalDate, Staff>> entryList = new ArrayList<>(onCallSchedule.entrySet());
+        int count = entryList.size();
 
-    public void sort(Map<LocalDate, Staff> onCallSchedule){
+        for (int i = 1; i < count-1; i++) {
+            Map.Entry<LocalDate, Staff> frontData = entryList.get(i-1);
+            Staff frontStaff  = frontData.getValue();
+
+            Map.Entry<LocalDate, Staff> middleData = entryList.get(i);
+            Staff middleStaff  = middleData.getValue();
+
+            if(frontStaff.equals(middleStaff)){
+                Map.Entry<LocalDate, Staff> nextData = entryList.get(i+1);
+                Staff nextStaff  = nextData.getValue();
+
+                onCallSchedule.put(nextData.getKey(),middleStaff);
+                onCallSchedule.put(middleData.getKey(),nextStaff);
+            }
+        }
+
+    }
+
+    /*
+      public void sort(Map<LocalDate, Staff> onCallSchedule){
         List<LocalDate> dates = new ArrayList<>(onCallSchedule.keySet());
         int count = onCallSchedule.size();
 
-        //note 날짜를 바꾸면 됨 -> 어차피 정렬됨
         for(int i = 1; i < count-1; i++){
             LocalDate frontDate = dates.get(i-1);
             Staff frontStaff = onCallSchedule.get(frontDate);
@@ -31,5 +53,6 @@ public class ContinuousWorkSwitcher implements OnCallPolicy {
             }
         }
     }
+     */
 
 }
