@@ -10,27 +10,27 @@ import oncall.domain.Staff;
 
 public class ContinuousWorkSwitcher implements OnCallPolicy {
 
-    public void sort(TreeMap<LocalDate, Staff> onCallSchedule){
+    public void sort(TreeMap<LocalDate, Staff> onCallSchedule) {
         List<Map.Entry<LocalDate, Staff>> entryList = new ArrayList<>(onCallSchedule.entrySet());
         int count = entryList.size();
 
-        for (int i = 1; i < count-1; i++) {
-            Map.Entry<LocalDate, Staff> frontData = entryList.get(i-1);
-            Staff frontStaff  = frontData.getValue();
+        for (int i = 1; i < count - 1; i++) {
+            Map.Entry<LocalDate, Staff> frontData = entryList.get(i - 1);
+            Staff frontStaff = frontData.getValue();
 
             Map.Entry<LocalDate, Staff> middleData = entryList.get(i);
-            Staff middleStaff  = middleData.getValue();
+            Staff middleStaff = middleData.getValue();
 
-            if(frontStaff.equals(middleStaff)){
-                Map.Entry<LocalDate, Staff> nextData = entryList.get(i+1);
-                Staff nextStaff  = nextData.getValue();
+            if (frontStaff.equals(middleStaff)) {
+                Map.Entry<LocalDate, Staff> nextData = entryList.get(i + 1);
+                Staff nextStaff = nextData.getValue();
 
-                onCallSchedule.put(nextData.getKey(),middleStaff);
-                onCallSchedule.put(middleData.getKey(),nextStaff);
+                onCallSchedule.put(nextData.getKey(), middleStaff);
+                onCallSchedule.put(middleData.getKey(), nextStaff);
             }
         }
-
     }
+
 
     /*
       public void sort(Map<LocalDate, Staff> onCallSchedule){

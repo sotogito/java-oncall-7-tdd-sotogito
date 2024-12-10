@@ -1,7 +1,5 @@
 package oncall;
 
-import java.time.LocalDate;
-import net.bytebuddy.asm.Advice.Local;
 import oncall.controller.OnCallMainController;
 
 public class Application {
@@ -10,4 +8,5 @@ public class Application {
         OnCallMainController controller = new OnCallMainController();
         controller.run();
     }
+
 }

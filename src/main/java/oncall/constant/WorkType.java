@@ -11,8 +11,4 @@ public enum WorkType {
         this.isWeekend = isWeekend;
     }
 
-    public boolean isWeekend() {
-        return isWeekend;
-    }
-
 }

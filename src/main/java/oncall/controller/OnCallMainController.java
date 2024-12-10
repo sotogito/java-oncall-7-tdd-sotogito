@@ -17,7 +17,7 @@ public class OnCallMainController {
     private OnCallSettingService onCallSettingService;
     private OnCallService onCallService;
 
-    public void run(){
+    public void run() {
         onCallSettingService = new OnCallSettingService();
         onCallService = new OnCallService();
 
@@ -29,26 +29,27 @@ public class OnCallMainController {
     }
 
     private Staffs createStaff() {
-        while (true){
+        while (true) {
             try {
                 WeekdayStaffsDto weekdayDto = StaffParser.parseWeekday(Input.inputWeekdayStaffs());
                 WeekendStaffsDto weekendDto = StaffParser.parseWeekend(Input.inputWeekendStaffs());
 
                 return onCallSettingService.createStaffs(weekdayDto, weekendDto);
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 Output.printError(e.getMessage());
             }
         }
     }
 
-    private Schedule createSchedule(){
-        while (true){
+    private Schedule createSchedule() {
+        while (true) {
             try {
                 ScheduleDto dto = ScheduleParser.parse(Input.inputDate());
                 return onCallSettingService.createSchedule(dto);
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 Output.printError(e.getMessage());
             }
         }
     }
+
 }

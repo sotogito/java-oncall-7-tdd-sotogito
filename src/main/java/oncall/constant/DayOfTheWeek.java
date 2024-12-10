@@ -3,13 +3,13 @@ package oncall.constant;
 import java.time.DayOfWeek;
 
 public enum DayOfTheWeek {
-    SUNDAY(DayOfWeek.SUNDAY,"일",true),
-    MONDAY(DayOfWeek.MONDAY,"월",false),
-    TUESDAY(DayOfWeek.TUESDAY,"화",false),
-    WEDNESDAY(DayOfWeek.WEDNESDAY,"수",false),
-    THURSDAY(DayOfWeek.THURSDAY,"목",false),
-    FRIDAY(DayOfWeek.FRIDAY,"금",false),
-    SATURDAY(DayOfWeek.SATURDAY,"토",true);
+    SUNDAY(DayOfWeek.SUNDAY, "일", true),
+    MONDAY(DayOfWeek.MONDAY, "월", false),
+    TUESDAY(DayOfWeek.TUESDAY, "화", false),
+    WEDNESDAY(DayOfWeek.WEDNESDAY, "수", false),
+    THURSDAY(DayOfWeek.THURSDAY, "목", false),
+    FRIDAY(DayOfWeek.FRIDAY, "금", false),
+    SATURDAY(DayOfWeek.SATURDAY, "토", true);
 
     private final DayOfWeek dayOfWeek;
     private final String korean;
@@ -25,11 +25,10 @@ public enum DayOfTheWeek {
         return korean;
     }
 
-
     //note 현재 주말인지 모기 위함
     public static boolean isWeekend(DayOfWeek other) {
         for (DayOfTheWeek dayOfTheWeek : DayOfTheWeek.values()) {
-            if(dayOfTheWeek.dayOfWeek.equals(other)){
+            if (dayOfTheWeek.dayOfWeek.equals(other)) {
                 return dayOfTheWeek.isWeekend;
             }
         }
@@ -38,7 +37,7 @@ public enum DayOfTheWeek {
 
     public static DayOfTheWeek find(DayOfWeek dayOfWeek) {
         for (DayOfTheWeek dayOfTheWeek : DayOfTheWeek.values()) {
-            if(dayOfTheWeek.dayOfWeek.equals(dayOfWeek)){
+            if (dayOfTheWeek.dayOfWeek.equals(dayOfWeek)) {
                 return dayOfTheWeek;
             }
         }

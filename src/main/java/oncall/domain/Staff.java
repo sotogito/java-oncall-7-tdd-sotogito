@@ -1,16 +1,14 @@
 package oncall.domain;
 
-import java.time.LocalDate;
 import java.util.Objects;
-import oncall.constant.DayOfTheWeek;
 import oncall.constant.WorkType;
 
 /**
  * isHoliday말고 workType Enum에 Holiday를 추가하여 관리
  */
-public class Staff{
+public class Staff {
     private final String name;
-    private WorkType workType;
+    private final WorkType workType;
 
     public Staff(String name, WorkType workType) {
         validateName(name);
@@ -18,7 +16,7 @@ public class Staff{
         this.workType = workType;
     }
 
-    public Staff cloneAsNewWorkType(WorkType workType){
+    public Staff cloneAsNewWorkType(WorkType workType) {
         return new Staff(name, workType);
     }
 
@@ -31,25 +29,28 @@ public class Staff{
     }
 
     private void validateName(String name) {
-        if(name.isEmpty() || name.length() > 5) {
+        if (name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
         }
     }
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Staff staff = (Staff) o;
         return Objects.equals(name, staff.name);
-               // Objects.equals(workType, staff.workType);
+        // Objects.equals(workType, staff.workType);
     }
-
 
     @Override
     public int hashCode() {
         return Objects.hash(name);
     }
-
 
 }
