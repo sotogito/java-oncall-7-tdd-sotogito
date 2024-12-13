@@ -2,7 +2,7 @@ package oncall.controller;
 
 import oncall.domain.OnCallSchedule;
 import oncall.domain.Schedule;
-import oncall.domain.Staffs;
+import oncall.domain.StaffFinder;
 import oncall.domain.dto.InputWeekdayStaffsDto;
 import oncall.domain.dto.InputWeekendStaffsDto;
 import oncall.domain.parsers.InputScheduleParser;
@@ -23,7 +23,7 @@ public class MainController {
 
     public void run() {
         Schedule schedule = createSchedule();
-        Staffs staffs = createStaffs();
+        StaffFinder staffs = createStaffs();
         OnCallSchedule onCallScheduleResult = onCallService.schedule(schedule, staffs);
         System.out.println(onCallScheduleResult);
     }
@@ -38,7 +38,7 @@ public class MainController {
         }
     }
 
-    private Staffs createStaffs() {
+    private StaffFinder createStaffs() {
         while (true) {
             try {
                 InputWeekdayStaffsDto weekday = InputStaffParser.parseWeekday(Input.inputWeekdayStaffs());

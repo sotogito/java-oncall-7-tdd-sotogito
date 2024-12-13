@@ -1,17 +1,16 @@
 package oncall.service;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import oncall.constants.WorkType;
 import oncall.domain.Schedule;
-import oncall.domain.Staffs;
+import oncall.domain.StaffFinder;
 import oncall.domain.dto.InputScheduleDto;
 import oncall.domain.dto.InputWeekdayStaffsDto;
 import oncall.domain.dto.InputWeekendStaffsDto;
-import oncall.domain.staff.OnCallStaff;
 import oncall.domain.staff.Staff;
-import oncall.domain.staff.WeekdayStaffs;
-import oncall.domain.staff.WeekendStaffs;
+import oncall.domain.staff.Staffs;
 
 public class SettingService {
 
@@ -19,7 +18,9 @@ public class SettingService {
         return new Schedule(dto.month(), dto.dayOfTheWeek());
     }
 
-    public Staffs createStaffs(InputWeekdayStaffsDto dayDto, InputWeekendStaffsDto endDto) {
+    public StaffFinder createStaffs(InputWeekdayStaffsDto dayDto, InputWeekendStaffsDto endDto) {
+        EnumMap<WorkType, Staffs> result = new EnumMap<>(WorkType.class);
+
         List<Staff> dayStaffs = new ArrayList<>();
         for (String dayName : dayDto.weekdayStaffs()) {
             dayStaffs.add(new Staff(dayName, WorkType.WEEKDAY));
@@ -30,10 +31,10 @@ public class SettingService {
             endStaffs.add(new Staff(endName, WorkType.WEEKEND));
         }
 
-        OnCallStaff day = new WeekdayStaffs(dayStaffs);
-        OnCallStaff end = new WeekendStaffs(endStaffs);
+        result.put(WorkType.WEEKDAY, new Staffs(dayStaffs));
+        result.put(WorkType.WEEKEND, new Staffs(endStaffs));
 
-        return new Staffs(day, end);
+        return new StaffFinder(result);
     }
 
 

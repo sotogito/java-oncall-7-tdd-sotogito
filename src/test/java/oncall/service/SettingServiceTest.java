@@ -2,7 +2,7 @@ package oncall.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import oncall.domain.Staffs;
+import oncall.domain.StaffFinder;
 import oncall.domain.dto.InputWeekdayStaffsDto;
 import oncall.domain.dto.InputWeekendStaffsDto;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ class SettingServiceTest {
         InputWeekdayStaffsDto dayDto = new InputWeekdayStaffsDto(day);
         InputWeekendStaffsDto endDto = new InputWeekendStaffsDto(end);
 
-        Staffs staffs = settingService.createStaffs(dayDto, endDto);
+        StaffFinder staffs = settingService.createStaffs(dayDto, endDto);
 
         System.out.println(staffs);
     }

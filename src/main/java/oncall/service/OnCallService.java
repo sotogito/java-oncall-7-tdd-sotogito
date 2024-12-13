@@ -6,13 +6,13 @@ import oncall.constants.Week;
 import oncall.constants.WorkType;
 import oncall.domain.OnCallSchedule;
 import oncall.domain.Schedule;
-import oncall.domain.Staffs;
+import oncall.domain.StaffFinder;
 import oncall.domain.staff.Staff;
 
 public class OnCallService {
 
 
-    public OnCallSchedule schedule(Schedule schedule, Staffs staffs) {
+    public OnCallSchedule schedule(Schedule schedule, StaffFinder staffs) {
         OnCallSchedule onCallSchedule = new OnCallSchedule();
         LocalDate startDate = schedule.getStartDate();
         int monthCount = schedule.monthLength();
@@ -24,7 +24,7 @@ public class OnCallService {
         return onCallSchedule;
     }
 
-    private void basicSort(OnCallSchedule onCallSchedule, Staffs staffs, LocalDate date, int monthCount) {
+    private void basicSort(OnCallSchedule onCallSchedule, StaffFinder staffs, LocalDate date, int monthCount) {
         int dayCount = 0;
         int endCount = 0;
 

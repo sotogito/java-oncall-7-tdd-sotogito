@@ -5,20 +5,29 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class WeekdayStaffs implements OnCallStaff {
-    private final List<Staff> weekdays;
+public class Staffs {
+    private final List<Staff> staffs;
 
-    public WeekdayStaffs(List<Staff> weekdays) {
-        validateDuplicate(weekdays);
-        validateStaffCount(weekdays);
-        this.weekdays = weekdays;
+    public Staffs(List<Staff> staffs) {
+        validateDuplicate(staffs);
+        validateStaffCount(staffs);
+        this.staffs = staffs;
     }
+
+    public int getSize() {
+        return staffs.size();
+    }
+
+    public Staff getStaffByIndex(int index) {
+        return staffs.get(index);
+    }
+    
 
     public void validateDuplicate(List<Staff> staffs) {
         Set<Staff> carSet = new HashSet<>();
         for (Staff staff : staffs) {
             if (!carSet.add(staff)) {
-                throw new IllegalArgumentException("중복된 이름의 평일 근무자가 존재합니다.");
+                throw new IllegalArgumentException("중복된 이름의 근무자가 존재합니다.");
             }
         }
     }
@@ -29,14 +38,6 @@ public class WeekdayStaffs implements OnCallStaff {
         }
     }
 
-    public int getSize() {
-        return weekdays.size();
-    }
-
-    @Override
-    public Staff getStaffByIndex(int index) {
-        return weekdays.get(index);
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,18 +47,18 @@ public class WeekdayStaffs implements OnCallStaff {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        WeekdayStaffs that = (WeekdayStaffs) o;
-        return Objects.equals(new HashSet<>(weekdays), new HashSet<>(that.weekdays));
+        Staffs that = (Staffs) o;
+        return Objects.equals(new HashSet<>(staffs), new HashSet<>(that.staffs));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(weekdays);
+        return Objects.hash(staffs);
     }
 
     @Override
     public String toString() {
-        return weekdays.toString();
+        return staffs.toString();
     }
 
 }

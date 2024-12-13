@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import oncall.domain.OnCallSchedule;
 import oncall.domain.Schedule;
-import oncall.domain.Staffs;
+import oncall.domain.StaffFinder;
 import oncall.domain.dto.InputWeekdayStaffsDto;
 import oncall.domain.dto.InputWeekendStaffsDto;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ class BusinessServiceTest {
         InputWeekdayStaffsDto dayDto = new InputWeekdayStaffsDto(day);
         InputWeekendStaffsDto endDto = new InputWeekendStaffsDto(end);
 
-        Staffs staffs = settingService.createStaffs(dayDto, endDto);
+        StaffFinder staffs = settingService.createStaffs(dayDto, endDto);
 
         OnCallSchedule onCallSchedule = onCallService.schedule(schedule, staffs);
         System.out.println(onCallSchedule);

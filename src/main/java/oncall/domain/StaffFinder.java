@@ -2,23 +2,18 @@ package oncall.domain;
 
 import java.util.EnumMap;
 import oncall.constants.WorkType;
-import oncall.domain.staff.OnCallStaff;
 import oncall.domain.staff.Staff;
+import oncall.domain.staff.Staffs;
 
-/**
- * 그냥 Map으로 생성하는게 맞는듯
- */
-public class Staffs {
-    private final EnumMap<WorkType, OnCallStaff> staffs = new EnumMap<>(WorkType.class);
+public class StaffFinder {
+    private final EnumMap<WorkType, Staffs> staffs;
 
-    public Staffs(OnCallStaff weekday, OnCallStaff weekend) {
-        staffs.put(WorkType.WEEKDAY, weekday);
-        staffs.put(WorkType.WEEKEND, weekend);
+    public StaffFinder(EnumMap<WorkType, Staffs> staffs) {
+        this.staffs = staffs;
     }
 
-
     public Staff findStaffByOrder(WorkType workType, int order) {
-        OnCallStaff workTypeStaffs = staffs.get(workType);
+        Staffs workTypeStaffs = staffs.get(workType);
         int index = order % workTypeStaffs.getSize();
 
         return workTypeStaffs.getStaffByIndex(index);
@@ -32,4 +27,5 @@ public class Staffs {
         }
         return printout.toString();
     }
+
 }
