@@ -9,6 +9,7 @@ public class StaffFinder {
     private final EnumMap<WorkType, Staffs> staffs;
 
     public StaffFinder(EnumMap<WorkType, Staffs> staffs) {
+        validateSameStaffs(staffs);
         this.staffs = staffs;
     }
 
@@ -17,6 +18,15 @@ public class StaffFinder {
         int index = order % workTypeStaffs.getSize();
 
         return workTypeStaffs.getStaffByIndex(index);
+    }
+
+    public void validateSameStaffs(EnumMap<WorkType, Staffs> staffs) {
+        Staffs weekdayStaffs = staffs.get(WorkType.WEEKDAY);
+        Staffs weekendStaffs = staffs.get(WorkType.WEEKEND);
+
+        if (!weekdayStaffs.equals(weekendStaffs)) {
+            throw new IllegalArgumentException("평일,주말 직원이 다릅니다.");
+        }
     }
 
     @Override
