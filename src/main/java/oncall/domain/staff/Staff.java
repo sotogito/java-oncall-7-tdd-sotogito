@@ -5,9 +5,12 @@ import java.util.Objects;
 import oncall.constants.Week;
 import oncall.constants.WorkType;
 
+/**
+ * Staaffs에는 List<String> 온 콜 매칭 후 그 뒤에 객체를 생성해야..
+ */
 public class Staff implements Comparable<Staff> {
     private final String name;
-    private final WorkType workType;
+    private WorkType workType;
     private LocalDate workDate;
 
     public Staff(String name, WorkType workType) {
@@ -20,16 +23,27 @@ public class Staff implements Comparable<Staff> {
         this.workDate = workDate;
     }
 
-    private void validateNameLength(String name) {
-        if (name.isEmpty() || name.length() > 5) {
-            throw new IllegalArgumentException("직원의 이름은 1~5글자로 입력해주세요");
-        }
-    }
-
     public Staff getNewWorkTypeStaff(WorkType newWorkType, LocalDate newWorkDate) {
         Staff newStaff = new Staff(name, newWorkType);
         newStaff.setWorkDate(newWorkDate);
         return newStaff;
+    }
+
+    public void switchEachWorkDate(Staff otherNext) {
+        WorkType thisWorkType = workType;
+        LocalDate thisWorkDate = workDate;
+
+        workType = otherNext.workType;
+        workDate = otherNext.workDate;
+
+        otherNext.workType = thisWorkType;
+        otherNext.workDate = thisWorkDate;
+    }
+
+    private void validateNameLength(String name) {
+        if (name.isEmpty() || name.length() > 5) {
+            throw new IllegalArgumentException("직원의 이름은 1~5글자로 입력해주세요");
+        }
     }
 
     @Override

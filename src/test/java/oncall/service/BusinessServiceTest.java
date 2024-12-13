@@ -18,7 +18,7 @@ class BusinessServiceTest {
         Schedule schedule = new Schedule(5, "월");
 
         List<String> day = new ArrayList<>(List.of("12", "34", "56", "78", "89"));
-        List<String> end = new ArrayList<>(List.of("12", "34", "56", "78", "89"));
+        List<String> end = new ArrayList<>(List.of("78", "89", "56", "34", "12"));
 
         InputWeekdayStaffsDto dayDto = new InputWeekdayStaffsDto(day);
         InputWeekendStaffsDto endDto = new InputWeekendStaffsDto(end);

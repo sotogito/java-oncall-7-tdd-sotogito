@@ -18,20 +18,13 @@ public class OnCallService {
         int monthCount = schedule.monthLength();
 
         basicSort(onCallSchedule, staffs, startDate, monthCount);
+        onCallSchedule.sortByDate();
 
+        switchContinuousWorker(onCallSchedule);
         return onCallSchedule;
     }
 
     private void basicSort(OnCallSchedule onCallSchedule, Staffs staffs, LocalDate date, int monthCount) {
-        /**
-         * 하나씩 늘리면서
-         *
-         * - 평일
-         *  - 공휴일
-         *
-         * - 주말
-         */
-
         int dayCount = 0;
         int endCount = 0;
 
@@ -64,6 +57,6 @@ public class OnCallService {
     }
 
     private void switchContinuousWorker(OnCallSchedule onCallSchedule) {
-
+        onCallSchedule.switchContinuousWorker();
     }
 }
