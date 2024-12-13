@@ -4,5 +4,6 @@ public enum WorkType {
     WEEKDAY,
     WEEKEND,
     HOLIDAY;
+
 }
 

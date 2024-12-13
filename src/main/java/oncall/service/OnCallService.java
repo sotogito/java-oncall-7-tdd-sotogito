@@ -18,8 +18,6 @@ public class OnCallService {
         int monthCount = schedule.monthLength();
 
         basicSort(onCallSchedule, staffs, startDate, monthCount);
-        onCallSchedule.sortByDate();
-
         switchContinuousWorker(onCallSchedule);
         return onCallSchedule;
     }
@@ -45,18 +43,20 @@ public class OnCallService {
                     onCallSchedule.addStaffByNew(staff, WorkType.WEEKDAY, date);
                     dayCount++;
                     break;
-                } else if (isWeekend) { //note 주말
-                    staff = staffs.findStaffByOrder(WorkType.WEEKEND, endCount);
-                    onCallSchedule.addStaffByNew(staff, WorkType.WEEKDAY, date);
-                    endCount++;
-                    break;
                 }
+                //note 주말
+                staff = staffs.findStaffByOrder(WorkType.WEEKEND, endCount);
+                onCallSchedule.addStaffByNew(staff, WorkType.WEEKDAY, date);
+                endCount++;
+                break;
             }
             date = date.plusDays(1);
         }
+        onCallSchedule.sortByDate();
     }
 
     private void switchContinuousWorker(OnCallSchedule onCallSchedule) {
         onCallSchedule.switchContinuousWorker();
     }
+
 }
