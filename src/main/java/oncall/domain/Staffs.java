@@ -14,5 +14,14 @@ public class Staffs {
         staffs.put(WorkType.WEEKDAY, weekday);
         staffs.put(WorkType.WEEKEND, weekend);
     }
-    
+
+
+    @Override
+    public String toString() {
+        StringBuilder printout = new StringBuilder();
+        for (WorkType workType : staffs.keySet()) {
+            printout.append(workType).append(": ").append(staffs.get(workType).toString()).append("\n");
+        }
+        return printout.toString();
+    }
 }

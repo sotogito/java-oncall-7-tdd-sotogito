@@ -44,4 +44,9 @@ public class Staff implements Comparable<Staff> {
         return this.workDate.compareTo(o.workDate);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

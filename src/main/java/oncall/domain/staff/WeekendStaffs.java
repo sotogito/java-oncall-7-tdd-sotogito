@@ -49,4 +49,9 @@ public class WeekendStaffs implements OnCallStaff {
     }
 
 
+    @Override
+    public String toString() {
+        return weekends.toString();
+    }
+
 }

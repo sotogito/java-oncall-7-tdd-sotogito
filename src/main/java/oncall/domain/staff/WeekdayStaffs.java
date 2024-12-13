@@ -46,4 +46,9 @@ public class WeekdayStaffs implements OnCallStaff {
         return Objects.hash(weekdays);
     }
 
+    @Override
+    public String toString() {
+        return weekdays.toString();
+    }
+
 }
