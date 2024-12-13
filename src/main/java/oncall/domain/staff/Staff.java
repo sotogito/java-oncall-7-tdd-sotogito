@@ -17,6 +17,7 @@ public class Staff implements Comparable<Staff> {
         validateNameLength(name);
         this.name = name;
         this.workType = workType;
+        this.workDate = LocalDate.of(0, 1, 1);
     }
 
     private void setWorkDate(LocalDate workDate) {
