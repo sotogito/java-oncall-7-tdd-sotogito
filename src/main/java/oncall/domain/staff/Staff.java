@@ -20,14 +20,14 @@ public class Staff implements Comparable<Staff> {
         this.workDate = LocalDate.of(0, 1, 1);
     }
 
-    private void setWorkDate(LocalDate workDate) {
-        this.workDate = workDate;
-    }
-
     public Staff getNewWorkTypeStaff(WorkType newWorkType, LocalDate newWorkDate) {
         Staff newStaff = new Staff(name, newWorkType);
         newStaff.setWorkDate(newWorkDate);
         return newStaff;
+    }
+
+    private void setWorkDate(LocalDate workDate) {
+        this.workDate = workDate;
     }
 
     public void switchEachWorkDate(Staff otherNext) {
@@ -40,12 +40,14 @@ public class Staff implements Comparable<Staff> {
         otherNext.workType = thisWorkType;
         otherNext.workDate = thisWorkDate;
     }
+    
 
     private void validateNameLength(String name) {
         if (name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException("직원의 이름은 1~5글자로 입력해주세요");
         }
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -64,16 +66,13 @@ public class Staff implements Comparable<Staff> {
         return Objects.hash(name);
     }
 
+
     @Override
     public int compareTo(Staff o) {
         return this.workDate.compareTo(o.workDate);
     }
 
-    /**
-     * 5월 4일 목 수아 5월 5일 금(휴일) 루루
-     *
-     * @return
-     */
+
     @Override
     public String toString() {
         int month = workDate.getMonthValue();

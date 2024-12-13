@@ -24,4 +24,5 @@ public class InputScheduleParser {
             throw new IllegalArgumentException("월은 숫자로 입력해주세요.");
         }
     }
+    
 }

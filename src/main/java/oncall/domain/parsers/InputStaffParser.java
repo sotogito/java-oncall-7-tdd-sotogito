@@ -24,7 +24,6 @@ public class InputStaffParser {
         }
 
         String[] names = input.split(",");
-
         for (String name : names) {
             name = name.trim();
             result.add(name);
@@ -32,4 +31,5 @@ public class InputStaffParser {
 
         return result;
     }
+
 }

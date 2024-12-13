@@ -24,6 +24,7 @@ public class MainController {
     public void run() {
         Schedule schedule = createSchedule();
         StaffFinder staffs = createStaffs();
+
         OnCallSchedule onCallScheduleResult = onCallService.schedule(schedule, staffs);
         System.out.println(onCallScheduleResult);
     }
@@ -51,6 +52,5 @@ public class MainController {
         }
 
     }
-
 
 }
