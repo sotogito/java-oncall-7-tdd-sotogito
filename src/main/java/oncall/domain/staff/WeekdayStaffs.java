@@ -29,6 +29,15 @@ public class WeekdayStaffs implements OnCallStaff {
         }
     }
 
+    public int getSize() {
+        return weekdays.size();
+    }
+
+    @Override
+    public Staff getStaffByIndex(int index) {
+        return weekdays.get(index);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

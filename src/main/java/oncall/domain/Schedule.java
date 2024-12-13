@@ -21,6 +21,10 @@ public class Schedule {
         return LocalDate.of(2023, month, startDay);
     }
 
+    public int monthLength() {
+        return getStartDate().lengthOfMonth();
+    }
+
     private void validateMonth(int month) {
         if (month < 1 || month > 12) {
             throw new IllegalArgumentException("올바른 '월'을 입력해주세요.");

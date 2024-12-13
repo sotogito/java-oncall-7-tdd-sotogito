@@ -2,7 +2,9 @@ package oncall.domain.staff;
 
 public interface OnCallStaff {
     /**
-     * 반환
-     * 출력?
+     * 반환 출력?
      */
+    int getSize();
+
+    Staff getStaffByIndex(int index);
 }

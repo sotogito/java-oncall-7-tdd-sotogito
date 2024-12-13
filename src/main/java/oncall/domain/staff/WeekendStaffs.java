@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * 필요 없는 이유 생각해보기
+ */
 public class WeekendStaffs implements OnCallStaff {
 
     private final List<Staff> weekends;
@@ -29,6 +32,15 @@ public class WeekendStaffs implements OnCallStaff {
         if (staffs.size() < 5 || staffs.size() > 35) {
             throw new IllegalArgumentException("직원은 총 5~35명까지 입력가능합니다.");
         }
+    }
+
+    public int getSize() {
+        return weekends.size();
+    }
+
+    @Override
+    public Staff getStaffByIndex(int index) {
+        return weekends.get(index);
     }
 
     @Override
